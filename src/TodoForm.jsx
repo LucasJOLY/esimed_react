@@ -14,11 +14,17 @@ const TodoForm = ({ addTask }) => {
   return (
     <form onSubmit={handleSubmit}>
       <input
+        className="rounded border border-gray-300 p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 mr-6"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         type="text"
       />
-      <button type="submit">Ajouter</button>
+      <button
+        className="bg-sky-500 text-white py-2 px-4 rounded hover:bg-sky-700"
+        type="submit"
+      >
+        Ajouter
+      </button>
     </form>
   );
 };

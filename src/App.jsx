@@ -6,17 +6,15 @@ import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+  const [darkMode, setDarkMode] = useState(false);
   const [mapTasks, setMapTasks] = useState([]);
 
   const addTask = (task) => {
-    setTasks([...tasks, task]);
     const value = [task, false];
     setMapTasks([...mapTasks, value]);
   };
 
   const removeTask = (index) => {
-    setTasks(tasks.filter((item, i) => i !== index));
     setMapTasks(mapTasks.filter((item, i) => i !== index));
   };
 
@@ -27,15 +25,26 @@ function App() {
   };
 
   return (
-    <Fragment>
-      <TodoForm addTask={addTask} />
-      <TodoList
-        tasks={tasks}
-        mapTasks={mapTasks}
-        removeTask={removeTask}
-        checkTask={checkTask}
-      />
-    </Fragment>
+    <div className={darkMode ? "dark h-screen" : "h-screen"}>
+      <div
+        className={`flex items-center justify-center flex-col dark:bg-gray-900 dark:text-white h-full`}
+      >
+        <button
+          className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700 mb-5"
+          onClick={() => {
+            setDarkMode(!darkMode);
+          }}
+        >
+          Changer de thème
+        </button>
+        <TodoForm addTask={addTask} />
+        <TodoList
+          mapTasks={mapTasks}
+          removeTask={removeTask}
+          checkTask={checkTask}
+        />
+      </div>
+    </div>
   );
 }
 

@@ -1,17 +1,17 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 import "./App.css";
-const TodoList = ({ tasks, mapTasks, removeTask, checkTask }) => {
+const TodoList = ({ mapTasks, removeTask, checkTask }) => {
   return (
-    <ul>
-      {tasks.length > 0 ? (
-        tasks.map((task, index) => (
+    <ul className="flex justify-center items-center mt-5">
+      {mapTasks.length > 0 ? (
+        mapTasks.map((task, index) => (
           <TodoItem
             key={index}
-            task={task}
             index={index}
+            task={task[0]}
             removeTask={removeTask}
-            mapTasks={mapTasks}
+            checked={task[1]}
             checkTask={checkTask}
           />
         ))
