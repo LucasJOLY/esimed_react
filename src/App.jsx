@@ -2,11 +2,24 @@ import { Fragment, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import NotFoundPage from "./pages/NotFoundPage";
+import { Routes, Route, BrowserRouter } from "react-router";
+import NavBar from "./NavBar";
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <Fragment></Fragment>;
+  return (
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
