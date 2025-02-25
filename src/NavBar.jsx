@@ -17,6 +17,7 @@ function NavBar() {
         A propos
       </NavLink>
       <NavLink to="/contact">Contacts</NavLink>
+      <NavLink to="/login">Connexion</NavLink>
     </nav>
   );
 }

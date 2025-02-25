@@ -8,6 +8,8 @@ import Contact from "./pages/Contact";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Routes, Route, BrowserRouter } from "react-router";
 import NavBar from "./NavBar";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +18,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="register" element={<Register />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
