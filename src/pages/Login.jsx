@@ -1,6 +1,6 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import React from "react";
-
+import { NavLink } from "react-router";
 function Login() {
   return (
     <div
@@ -13,38 +13,40 @@ function Login() {
         height: "100%",
       }}
     >
-      <TextField
-        id="outlined-basic"
-        label="Email"
-        variant="outlined"
-        type="text"
+      <Typography variant="h4" className="mb-10!">
+        Connexion
+      </Typography>
+      <TextField label="Email" type="text" />
+      <TextField label="Mot de passe" type="text" />
+      <Button
+        variant="contained"
+        color="primary"
+        className="mt-5!"
         sx={{
-          "& .MuiOutlinedInput-root": {
-            border: "1px solid #fff",
-            color: "#fff",
+          backgroundColor: "#0faf52",
+          borderRadius: 10,
+          "&:hover": {
+            backgroundColor: "#11873f",
           },
-          "& .MuiFormLabel-root": {
-            color: "#fff",
-          },
+          color: "white",
         }}
-      />
-      <TextField
-        label="Mot de passe"
-        type="text"
-        sx={{
-          color: "#fff",
-          "& .MuiOutlinedInput-root": {
-            border: "1px solid #fff",
-            color: "#fff",
-          },
-          "& .MuiFormLabel-root": {
-            color: "#fff",
-          },
-        }}
-      />
-      <Button variant="contained" color="primary">
+      >
         Se connecter
       </Button>
+
+      <NavLink
+        to="/register"
+        end
+        style={{
+          color: "#0faf52",
+
+          marginTop: "20px",
+          fontSize: "15px",
+          textDecoration: "underline",
+        }}
+      >
+        Pas encore inscrit ? S'inscrire
+      </NavLink>
     </div>
   );
 }
