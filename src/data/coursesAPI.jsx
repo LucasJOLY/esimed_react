@@ -13,7 +13,7 @@ export const register = async (username, email, password) => {
     });
     return response.data;
   } catch (error) {
-    console.error("Erreur lors de l'inscription de l'utilisateur:", error);
+    toas.error("Erreur lors de l'inscription de l'utilisateur:", error);
     throw error;
   }
 };
