@@ -46,11 +46,6 @@ export default function PokeSearch() {
             await chercher();
           }}
           className="h-[50px] ml-2!"
-          style={{
-            backgroundColor: theme.palette.primary.main,
-            color: "white",
-            borderRadius: "50%",
-          }}
         >
           <FaSearch />
         </Button>

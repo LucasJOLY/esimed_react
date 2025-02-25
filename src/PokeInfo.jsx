@@ -1,7 +1,8 @@
-import { Card, CardMedia, Typography } from "@mui/material";
+import { Card, CardMedia, Typography, useTheme } from "@mui/material";
 import React from "react";
 
 function PokeInfo({ pokeData }) {
+  const theme = useTheme();
   return (
     <div>
       {pokeData && (
@@ -33,6 +34,26 @@ function PokeInfo({ pokeData }) {
                 <li key={typeInfo.type.name}>{typeInfo.type.name}</li>
               ))}
             </ul>
+          </div>
+          <div>
+            <Typography variant="h2" className="text-xl mt-2">
+              Talents:
+            </Typography>
+            <ul>
+              {pokeData.abilities.map((abilityInfo) => (
+                <li key={abilityInfo.ability.name}>
+                  {abilityInfo.ability.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <Typography variant="h3" className="text-xl mt-2">
+              Taille: {pokeData.height} dm
+            </Typography>
+            <Typography variant="h3" className="text-xl mt-2">
+              Poids: {pokeData.weight} hg
+            </Typography>
           </div>
         </Card>
       )}
