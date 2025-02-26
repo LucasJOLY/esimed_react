@@ -1,26 +1,19 @@
 import { Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router";
-import { login } from "../data/coursesAPI";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
+
+import useDispatchNavigate from "../hook/useDispatchNavigate";
+import { signIn } from "./store/slice";
 function Login() {
-  const navigate = useNavigate();
+  const dispatchNavigate = useDispatchNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleLogin = async () => {
-    try {
-      const data = await login(email, password);
-      localStorage.setItem("token", data.accessToken);
-      localStorage.setItem("user_id", data.user.id);
-      toast.success("Connexion réussie");
-      navigate("/courses");
-      window.location.reload();
-    } catch (error) {
-      console.error(error);
-      toast.error("Erreur lors de la connexion");
-    }
+    await dispatchNavigate(signIn({ email, password }), "/courses");
+    window.location.reload();
   };
   return (
     <div

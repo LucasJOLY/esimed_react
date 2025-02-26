@@ -1,13 +1,18 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
+import useDispatchNavigate from "../hook/useDispatchNavigate";
+import { logOut } from "../auth/store/slice";
 import { useNavigate } from "react-router";
-function NavBar() {
-  let navigate = useNavigate();
-  const token = localStorage.getItem("token");
 
-  const logout = () => {
-    localStorage.clear();
-    navigate("/login");
+function NavBar() {
+  const dispatchNavigate = useDispatchNavigate();
+  let navigate = useNavigate();
+
+  const token = useSelector((state) => state.auth.token);
+
+  const logout = async () => {
+    await dispatchNavigate(logOut(), "/login");
   };
 
   return (

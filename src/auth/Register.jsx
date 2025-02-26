@@ -1,23 +1,17 @@
 import { Button, TextField, Typography } from "@mui/material";
 import React from "react";
-import { register } from "../data/coursesAPI";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
+import useDispatchNavigate from "../hook/useDispatchNavigate";
+import { signUp } from "./store/slice";
 function Register() {
-  const navigate = useNavigate();
+  const dispatchNavigate = useDispatchNavigate();
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const handleRegister = async () => {
     try {
-      await register(username, email, password);
-      toast.success("Inscription réussie");
-      navigate("/login");
-    } catch (error) {
-      console.error(error);
-      toast.error("Erreur lors de l'incription");
-    }
+      await dispatchNavigate(signUp({ username, email, password }), "/");
+    } catch (error) {}
   };
   return (
     <div

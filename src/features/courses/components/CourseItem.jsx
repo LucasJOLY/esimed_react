@@ -23,11 +23,7 @@ function CourseItem({ item, editAnItem, deleteAnItem }) {
             },
           }}
           onClick={() => {
-            editAnItem(item.id, {
-              name: newValue,
-              userId: item.userId,
-              id: item.id,
-            });
+            editAnItem(item.id, newValue);
             setIsEditing(!isEditing);
           }}
         >
