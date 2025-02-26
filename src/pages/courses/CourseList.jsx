@@ -9,6 +9,7 @@ import {
   postItem,
 } from "../../data/coursesAPI";
 import { toast } from "react-toastify";
+import AuthGuard from "../../security/AuthGuard";
 
 function CourseList() {
   const userId = localStorage.getItem("user_id");
@@ -96,4 +97,4 @@ function CourseList() {
   );
 }
 
-export default CourseList;
+export default AuthGuard(CourseList);

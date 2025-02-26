@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import MuiThemeProvider from "./MuiTheme";
 import { ToastContainer } from "react-toastify";
 import CourseList from "./pages/courses/CourseList";
+import AuthGuard from "./security/AuthGuard";
 function App() {
   return (
     <Fragment>
