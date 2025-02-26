@@ -1,7 +1,27 @@
 import { Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import { NavLink } from "react-router";
+import { login } from "../data/coursesAPI";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const handleLogin = async () => {
+    try {
+      const data = await login(email, password);
+      localStorage.setItem("token", data.accessToken);
+      localStorage.setItem("user_id", data.user.id);
+      toast.success("Connexion réussie");
+      navigate("/courses");
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+      toast.error("Erreur lors de la connexion");
+    }
+  };
   return (
     <div
       style={{
@@ -16,9 +36,20 @@ function Login() {
       <Typography variant="h4" className="mb-10!">
         Connexion
       </Typography>
-      <TextField label="Email" type="text" />
-      <TextField label="Mot de passe" type="text" />
+      <TextField
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        label="Email"
+        type="text"
+      />
+      <TextField
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        label="Mot de passe"
+        type="password"
+      />
       <Button
+        onClick={handleLogin}
         variant="contained"
         color="primary"
         className="mt-5!"

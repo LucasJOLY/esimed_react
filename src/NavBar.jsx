@@ -1,8 +1,17 @@
+import { Button } from "@mui/material";
 import React from "react";
-import { NavLink } from "react-router";
+import { useNavigate } from "react-router";
 function NavBar() {
+  let navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const logout = () => {
+    localStorage.clear();
+    navigate("/login");
+  };
+
   return (
-    <nav
+    <div
       style={{
         display: "flex",
         justifyContent: "space-around",
@@ -10,15 +19,22 @@ function NavBar() {
         fontSize: "20px",
       }}
     >
-      <NavLink to="/" end>
-        Acceuil
-      </NavLink>
-      <NavLink to="/about" end>
-        A propos
-      </NavLink>
-      <NavLink to="/contact">Contacts</NavLink>
-      <NavLink to="/login">Connexion</NavLink>
-    </nav>
+      <Button onClick={() => navigate("/")}>Accueil</Button>
+      {token && <Button onClick={() => navigate("/courses")}>Ma liste</Button>}
+      <Button onClick={() => navigate("/about")}>A propos</Button>
+      <Button onClick={() => navigate("/contact")}>Contact</Button>
+      <Button
+        onClick={() => {
+          if (token) {
+            logout();
+          } else {
+            navigate("/login");
+          }
+        }}
+      >
+        {token ? "Déconnexion" : "Connexion"}
+      </Button>
+    </div>
   );
 }
 

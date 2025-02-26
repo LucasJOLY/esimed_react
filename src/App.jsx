@@ -11,6 +11,8 @@ import NavBar from "./NavBar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MuiThemeProvider from "./MuiTheme";
+import { ToastContainer } from "react-toastify";
+import CourseList from "./pages/courses/CourseList";
 function App() {
   return (
     <Fragment>
@@ -24,6 +26,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="/courses" element={<CourseList />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>
